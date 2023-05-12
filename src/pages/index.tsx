@@ -12,10 +12,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <Layout>
-      <Meta page="Home" />
-      <Navbar />
-      <Header />
-    </Layout>
+    <>
+      {/* <Navbar /> */}
+      <Layout>
+        <Meta page="Home" />
+        <Header />
+      </Layout>
+    </>
   );
 }

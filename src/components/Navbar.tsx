@@ -12,30 +12,34 @@ const Navbar = () => {
       // animate={{ y: -10 }}
       // transition={{ delay: 0.2, duration: 1, type: 'spring', stiffness: 50 }}
     >
-      <Flex w="full" align="center" justify="space-between" fontWeight={600}>
-        <Flex align="center" justify="space-evenly" w="full">
-          <Image src="/icons/LOGO.svg" alt="logo" />
-          <Text>All features</Text>
-          <Text>Languages</Text>
-          <Text>FAQs</Text>
+      <Flex 
+        w="full" 
+        align="center" 
+        justify="space-evenly" 
+        fontWeight={600} 
+        color='#810A67' 
+        borderBottom='0.5px solid #3A3A3A'
+        p='1em'
+        px='5em'
+      >
+        <Box w='full' m={0}>
+          <Text fontSize='1.5em' textTransform='uppercase'>Errand</Text>
+        </Box>
+        <Flex align="center" gap={20} w="full">
+          <Text>Errands</Text>
+          <Text>Services</Text>
+          <Text>Blogs</Text>
         </Flex>
-        <Flex align="center" justify="space-evenly" w="full">
-          <Text>
-            Site Language:{" "}
-            <Text as="b" color="#FDD835">
-              English
-            </Text>
-          </Text>
-        </Flex>
+
         <Link href="/signup">
           <Button
             px="1.5em"
-            bg="#FDD835"
+            bg="#810A67"
             fontWeight={700}
-            rightIcon={<FiArrowUpRight />}
-            _hover={{ bg: "#fbdb4f" }}
+            _hover={{ bg: "#5b0b4a" }}
+            color='#fff'
           >
-            Get started, it`s free
+            Connect Wallet
           </Button>
         </Link>
       </Flex>

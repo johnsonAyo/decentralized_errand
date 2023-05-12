@@ -5,6 +5,7 @@ import {
   Flex,
   Image,
   Input,
+  Stack,
   Text,
 } from "@chakra-ui/react";
 import { FiArrowUpRight } from "react-icons/fi";
@@ -18,14 +19,35 @@ const Header = () => {
         transition={{ delay: 1, duration: 1.2 }}
     >
       <Flex
-        p="2em"
-        px="5.5em"
+        // py="3em"
+        // px="5.5em"
+        h='80vh'
         w="full"
         align="center"
-        justify="space-between"
-        gap={40}
+        justify="center"
+        direction='column'
+        gap={5}
+        bg='#e2b4d87c'
       >
-        <Flex w="full" direction="column" justify="center" py="6em">
+        <Text 
+          color='#810A67' 
+          fontSize='4em'
+          fontWeight={700}
+        >
+          Revolutionize the Way You Work
+        </Text>
+        <Text textAlign='center' color='#810A67' fontWeight={500} fontSize='1.5em'>
+          Find Top Talent and Seamless Services on the Next Generation Web  Platform <br />Join Today and Unlock Your Potential
+        </Text>
+        <Stack direction='row' spacing={4}>
+          <Button bg='#810A67' color='#fff' px='2em' _hover={{ bg: '#5b0b4a' }}>
+            Connect Wallet
+          </Button>
+          <Button bg='#E2B4D8' px='2em' _hover={{ bg: '#e2b4d87c' }}>
+            Join our community
+          </Button>
+        </Stack>
+        {/* <Flex w="full" direction="column" justify="center" py="6em">
           <Text fontWeight={700} fontSize="2.6em">
             Connect with language partners and reach fluency faster
           </Text>
@@ -50,20 +72,20 @@ const Header = () => {
               </Button>
             </a>
           </Flex>
-        </Flex>
+        </Flex> */}
         <motion.div
           initial={{ y: -150, opacity: 0 }}
           animate={{ y: -10, opacity: 1 }}
           transition={{ delay: 0.6, duration: 1, type: 'spring', stiffness: 30 }}
         >
-          <Flex
+          {/* <Flex
             w="full"
             bgImage="/images/ellipse.svg"
             bgRepeat="no-repeat"
             bgSize="cover"
           >
             <Image src="/images/group.svg" w="100%" alt="group" />
-          </Flex>
+          </Flex> */}
         </motion.div>
       </Flex>
     </motion.div>
