@@ -19,9 +19,7 @@ const Header = () => {
         transition={{ delay: 1, duration: 1.2 }}
     >
       <Flex
-        // py="3em"
-        // px="5.5em"
-        h='80vh'
+        h='93vh'
         w="full"
         align="center"
         justify="center"
@@ -47,6 +45,15 @@ const Header = () => {
             Join our community
           </Button>
         </Stack>
+
+        <motion.div
+          initial={{ y: -150, opacity: 0 }}
+          animate={{ y: -10, opacity: 1 }}
+          transition={{ delay: 0.6, duration: 1, type: 'spring', stiffness: 30 }}
+        >
+          <Image src='/images/interview.svg' alt='illustration' mt='3em' />
+        </motion.div>
+
         {/* <Flex w="full" direction="column" justify="center" py="6em">
           <Text fontWeight={700} fontSize="2.6em">
             Connect with language partners and reach fluency faster
