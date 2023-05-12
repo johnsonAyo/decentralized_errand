@@ -37,7 +37,7 @@ const Header = () => {
         <Text textAlign='center' color='#810A67' fontWeight={500} fontSize='1.5em'>
           Find Top Talent and Seamless Services on the Next Generation Web  Platform <br />Join Today and Unlock Your Potential
         </Text>
-        <Stack direction='row' spacing={4}>
+        <Stack direction='row' spacing={16}>
           <Button bg='#810A67' color='#fff' px='2em' _hover={{ bg: '#5b0b4a' }}>
             Connect Wallet
           </Button>

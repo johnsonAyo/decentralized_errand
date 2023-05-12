@@ -22,8 +22,10 @@ const Navbar = () => {
         p='1em'
         px='5em'
       >
-        <Box w='full' m={0}>
-          <Text fontSize='1.5em' textTransform='uppercase'>Errand</Text>
+        <Box w='80%' m={0}>
+          <Link href='/'>
+            <Text fontSize='1.5em' textTransform='uppercase'>Errand</Text>
+          </Link>
         </Box>
         <Flex align="center" gap={20} w="full">
           <Text>Errands</Text>
