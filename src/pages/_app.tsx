@@ -21,7 +21,6 @@ import {
   useAddress,
 } from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
-import { FluentProvider } from "@/context";
 
 export const theme = extendTheme({ colors });
 
@@ -32,12 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
   const address = useAddress();
   const Router = useRouter();
 
-  useEffect(() => {
-    if (address) {
-      Router.push("/welcome");
-    }
-  }, [address]);
-
   return (
     <QueryClientProvider client={queryClient}>
       <ThirdwebProvider
@@ -45,9 +38,7 @@ export default function App({ Component, pageProps }: AppProps) {
         supportedWallets={[metamaskWallet(), coinbaseWallet(), walletConnect()]}
       >
         <ChakraProvider>
-          <FluentProvider>
-            <Component {...pageProps} />
-          </FluentProvider>
+          <Component {...pageProps} />
         </ChakraProvider>
       </ThirdwebProvider>
       <ReactQueryDevtools initialIsOpen={false} />
