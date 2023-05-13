@@ -8,10 +8,8 @@ contract Errand {
     Counters.Counter private _tokenIds;
     address escrowContractAddreas;
     address public inspector;
-
-    constructor(address contractAddress) {
-        escrowContractAddreas = contractAddress;
-    }
+    bool errandCompleted;
+    bool bidComplelted;
 
     enum ErrandStatus {
         Created,
@@ -125,6 +123,33 @@ contract Errand {
         ownerErrandCount[msg.sender]--;
         ownerErrandCount[bid.bidder]++;
     }
+
+ function setCompleted(uint256 errandId, uint256 bidId) external payable {
+    ErrandStruct storage errand = errands[errandId];
+    Bid storage bid = bids[bidId];
+    require(errand.status == ErrandStatus.InProgress, "Errand hasn't started yet");
+    require(errandCompleted == true, "Errand not completed");
+    require(bidComplelted == true, "Bid not completed");
+    require(errand.status != ErrandStatus.Success, "Errand is already a success");
+    
+    // Transfer the bid amount to the bidder
+    payable(bid.bidder).transfer(bid.amount);
+    
+    // Update the status of the errand
+    errand.status = ErrandStatus.Success;
+}
+
+     function setErrandCompleted(uint256 errandId) external  {
+         ErrandStruct storage anErrand = errands[errandId];
+         require(anErrand.status == Inprogress, "not being accpeted yet")
+        errandCompleted = true;
+     }
+
+     function setBidCompleted(uint256 bidId) public  {
+         Bid storage bid = bids[bidId];
+        require(bid.accepted == true, "bid hasnt been accepeted");
+        bidComplelted = true;
+     }
 
     /**
      * @dev Deny a bid for an errand.
