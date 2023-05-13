@@ -23,7 +23,7 @@ import {
 import { evmWallets, solanaWallets } from "@particle-network/connect";
 import { ModalProvider } from "@particle-network/connect-react-ui";
 import { WalletEntryPosition } from "@particle-network/auth";
-// import "@particle-network/connect-react-ui/esm/index.css";
+import "@particle-network/connect-react-ui/esm/index.css";
 
 const colors = {
   brand: {
@@ -33,13 +33,6 @@ const colors = {
   },
 };
 
-import {
-  ThirdwebProvider,
-  metamaskWallet,
-  coinbaseWallet,
-  walletConnect,
-  useAddress,
-} from "@thirdweb-dev/react";
 import { useRouter } from "next/router";
 
 export const theme = extendTheme({ colors });
@@ -48,7 +41,6 @@ export const theme = extendTheme({ colors });
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
-  const address = useAddress();
   const Router = useRouter();
 
   return (
