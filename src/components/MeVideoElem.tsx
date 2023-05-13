@@ -5,7 +5,7 @@ const MeVideoElem = () => {
   const stream = useHuddleStore((state) => state.stream);
   const isCamPaused = useHuddleStore((state) => state.isCamPaused);
 
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -15,7 +15,7 @@ const MeVideoElem = () => {
   }, [stream]);
   return (
     <video
-     className="min-w-[300px] min-h-[500px]"
+      className="min-w-[300px] min-h-[500px]"
       ref={videoRef}
       autoPlay
     ></video>
