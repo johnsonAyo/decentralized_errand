@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
-import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text, Wrap, WrapItem } from "@chakra-ui/react";
+import ErrandRequest from "@/components/modal/ErrandRequest";
+import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from 'react-icons/bs'
 
 
@@ -116,8 +117,11 @@ const serviceArray = [
 ]
 
 const Dashboard = () => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+
     return (
         <Layout>
+            <ErrandRequest isOpen={isOpen} onClose={onClose} />
             <Box p='2.5em' px='5em' bg='#F5F5F566' h='92vh'>
                 <Center>
                     <Flex px='4em' justify='space-between' gap={20} align='center'>
@@ -139,6 +143,8 @@ const Dashboard = () => {
                             color='#fff'
                             leftIcon={<BsPlusCircleFill color='#fff' />}
                             fontSize='.9em'
+                            _hover={{ bg: "#5b0b4a" }}
+                            onClick={onOpen}
                         >
                             Errand Request
                         </Button>
