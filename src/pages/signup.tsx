@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import Meta from "@/components/Meta";
 import { Box, Button, Center, Flex, FormControl, FormLabel, Input, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Signup = () => {
     return (
@@ -50,9 +51,11 @@ const Signup = () => {
                                 />
                             </FormControl>
                             <Center my='3em'>
-                                <Button bg='#E2B4D8' p='1.5em' px='2em' fontSize='.9em'>
-                                    Create Account
-                                </Button>
+                                <Link href='/onboard'>
+                                    <Button bg='#E2B4D8' _hover={{ bg: '' }} p='1.5em' px='2em' fontSize='.9em'>
+                                        Create Account
+                                    </Button>
+                                </Link>
                             </Center>
                         </form>
                     </Box>

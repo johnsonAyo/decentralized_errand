@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout"
 import Meta from "@/components/Meta"
 import { Avatar, Box, Button, Flex, Stack, Text } from "@chakra-ui/react";
+import Link from "next/link";
 
 const Onboard = () => {
     return (
@@ -27,9 +28,11 @@ const Onboard = () => {
                     >
                         <Text fontWeight={600} fontSize='1.2em'>Looking for Specialist</Text>
                         <Avatar src='https://bit.ly/kent-c-dodds' name='John Doe' size='2xl' />
-                        <Button bg='#E2B4D8' p='1.5em' px='4em'>
-                            Continue
-                        </Button>
+                        <Link href='/dashboard'>
+                            <Button bg='#E2B4D8' _hover={{ bg: '' }} p='1.5em' px='4em'>
+                                Continue
+                            </Button>
+                        </Link>
                     </Flex>
 
                     <Flex 
@@ -45,9 +48,11 @@ const Onboard = () => {
                     >
                         <Text fontWeight={600} fontSize='1.2em'>I want to find a Job</Text>
                         <Avatar src='https://bit.ly/sage-adebayo' name='John Doe' size='2xl' />
-                        <Button bg='#E2B4D8' p='1.5em' px='4em'>
-                            Continue
-                        </Button>
+                        <Link href='/dashboard'>
+                            <Button bg='#E2B4D8' _hover={{ bg: '' }} p='1.5em' px='4em'>
+                                Continue
+                            </Button>
+                        </Link>
                     </Flex> 
                 </Stack>
             </Flex>
