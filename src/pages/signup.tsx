@@ -15,6 +15,7 @@ import { ConnectButton } from "@particle-network/connect-react-ui";
 import { useAccount } from "@particle-network/connect-react-ui";
 import { useConnectKit } from "@particle-network/connect-react-ui";
 import router from "next/router";
+import { CustomButton } from "@/components/CustomButton";
 
 //use this in react component.
 
@@ -48,7 +49,7 @@ const Signup = () => {
             Can we meet you?
           </Text>
           <Box mt="1.5em">
-            <ConnectButton />
+          <CustomButton />
           </Box>
         </Box>
       </Flex>

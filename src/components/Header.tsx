@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { CustomButton } from "./CustomButton";
 
 const Header = () => {
   return (
@@ -38,9 +39,7 @@ const Header = () => {
           Find Top Talent and Seamless Services on the Next Generation Web  Platform <br />Join Today and Unlock Your Potential
         </Text>
         <Stack direction='row' spacing={16}>
-          <Button bg='#810A67' color='#fff' px='2em' _hover={{ bg: '#5b0b4a' }}>
-            Connect Wallet
-          </Button>
+        <CustomButton />
           <Button bg='#E2B4D8' px='2em' _hover={{ bg: '#e2b4d87c' }}>
             Join our community
           </Button>

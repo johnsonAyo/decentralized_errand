@@ -11,6 +11,12 @@ contract Errand {
     bool errandCompleted;
     bool bidComplelted;
 
+   FeeReceiver private feeReceiver;
+
+    constructor() {
+        feeReceiver = FeeReceiver(address(this));
+    }
+
     enum ErrandStatus {
         Created,
         Pending,
@@ -21,16 +27,14 @@ contract Errand {
     }
 
     struct ErrandStruct {
-        string errandDetails;
-        address errrandOwner;
-        string errandTiltle;
+        string image;
+        string title;
+        string location;
+        bool isOnSite;
+        uint256 errandDate;
         uint256 errandCost;
-        string deliveryAddress;
-        string category;
-        string pickupAddress;
         ErrandStatus status;
-        string errandImage;
-        uint256 errandDeadline;
+        address owner;
     }
 
     struct Bid {
@@ -49,43 +53,35 @@ contract Errand {
 
     /**
      * @dev Create a new errand and also send the cost to the smart contract
-     * @param errandDetails The details of the errand.
-     * @param errandTitle The title of the errand.
-     * @param errandCost The cost of the errand.
-     * @param deliveryAddress The delivery address of the errand.
-     * @param category The category of the errand.
-     * @param pickupAddress The pickup address of the errand.
-     * @param errandImage The image of the errand.
-     * @param errandDeadline The deadline for the errand.
+     * @param _errandDetails The details of the errand.
+     * @param _errandTitle The title of the errand.
+     * @param _errandCost The cost of the errand.
+     * @param _deliveryAddress The delivery address of the errand.
+     * @param _category The category of the errand.
+     * @param _pickupAddress The pickup address of the errand.
+     * @param _errandImage The image of the errand.
+     * @param _errandDeadline The deadline for the errand.
      */
     function createErrand(
-        string memory _errandDetails,
-        string memory _errandTitle,
-        uint256 _errandCost,
-        string memory _deliveryAddress,
-        string memory _category,
-        string memory _pickupAddress,
-        string memory _errandImage,
-        uint256 _errandDeadline
+         string memory _image,
+        string memory _title,
+        string memory _location,
+        uint256 _errandDate;
+        uint256 _errandCost;
     ) public payable {
         require(_errandCost == msg.value, "wrong");
-        payable(address(this)).transfer(_errandCost);
+        feeReceiver.deposit{value: msg.value}();
         ErrandStruct storage newErrand = ownerErrand[msg.sender];
-        newErrand.category = _category;
-        newErrand.deliveryAddress = _deliveryAddress;
-        newErrand.errandCost = _errandCost;
-        newErrand.errandDeadline = _errandDeadline;
-        newErrand.errandDetails = _errandDetails;
-        newErrand.errandImage= _errandImage;
-        newErrand.errandTiltle = _errandTitle;
-        newErrand.errrandOwner = msg.sender;
-        newErrand.pickupAddress = _pickupAddress;
-        newErrand.status = ErrandStatus.Created;
+      
         errands.push(newErrand);
         uint256 newErrandId = errands.length - 1;
         errandToOwner[newErrandId] = msg.sender;
         ownerErrandCount[msg.sender]++;
         _tokenIds.increment();
+    }
+
+    function getAllErrand() external view returns (ErrandStruct[] memory) {
+        return errands;
     }
 
     /**
@@ -124,33 +120,6 @@ contract Errand {
         ownerErrandCount[bid.bidder]++;
     }
 
- function setCompleted(uint256 errandId, uint256 bidId) external payable {
-    ErrandStruct storage errand = errands[errandId];
-    Bid storage bid = bids[bidId];
-    require(errand.status == ErrandStatus.InProgress, "Errand hasn't started yet");
-    require(errandCompleted == true, "Errand not completed");
-    require(bidComplelted == true, "Bid not completed");
-    require(errand.status != ErrandStatus.Success, "Errand is already a success");
-    
-    // Transfer the bid amount to the bidder
-    payable(bid.bidder).transfer(bid.amount);
-    
-    // Update the status of the errand
-    errand.status = ErrandStatus.Success;
-}
-
-     function setErrandCompleted(uint256 errandId) external  {
-         ErrandStruct storage anErrand = errands[errandId];
-         require(anErrand.status == Inprogress, "not being accpeted yet")
-        errandCompleted = true;
-     }
-
-     function setBidCompleted(uint256 bidId) public  {
-         Bid storage bid = bids[bidId];
-        require(bid.accepted == true, "bid hasnt been accepeted");
-        bidComplelted = true;
-     }
-
     /**
      * @dev Deny a bid for an errand.
      * @param bidId The ID of the bid to deny.
@@ -165,7 +134,29 @@ contract Errand {
         delete bids[bidId];
     }
 
-    function allErrand() external view returns(ErrandStruct[] memory) {
-       return errands;
+    function allErrand() external view returns (ErrandStruct[] memory) {
+        return errands;
+    }
+}
+
+contract FeeReceiver {
+    address private owner;
+    mapping(address => uint256) private fees;
+
+    constructor() {
+        owner = msg.sender;
+    }
+
+    function deposit() external payable {
+        uint256 fee = msg.value;
+        fees[msg.sender] += fee;
+    }
+
+    function withdraw() external {
+        require(msg.sender == owner, "Only owner can withdraw");
+        uint256 amount = fees[msg.sender];
+        require(amount > 0, "No fees to withdraw");
+        fees[msg.sender] = 0;
+        payable(msg.sender).transfer(amount);
     }
 }
