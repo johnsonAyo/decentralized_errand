@@ -19,10 +19,10 @@ import {
     Textarea,
   } from "@chakra-ui/react";
   import { useState } from "react";
-  import Availability from "./component/Availability";
-  import Learn from "./component/Learn";
-  import Speak from "./component/Speak";
-  import Complete from "./component/Complete";
+//   import Availability from "./component/Availability";
+//   import Learn from "./component/Learn";
+//   import Speak from "./component/Speak";
+//   import Complete from "./component/Complete";
   
   interface Props {
     isOpen: boolean;

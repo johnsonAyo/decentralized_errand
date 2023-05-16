@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import Meta from "@/components/Meta";
+import Bid from "@/components/modal/Bid";
 import ErrandRequest from "@/components/modal/ErrandRequest";
 import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from 'react-icons/bs'
@@ -119,11 +120,13 @@ const serviceArray = [
 
 const Dashboard = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const { isOpen: isBidOpen, onOpen: onBidOpen, onClose: onBidClose } = useDisclosure();
 
     return (
         <Layout>
             <Meta page='Dashboard' />
             <ErrandRequest isOpen={isOpen} onClose={onClose} />
+            <Bid isOpen={isBidOpen} onClose={onBidClose} />
             <Box p='2.5em' px='5em' bg='#F5F5F566' h='92vh'>
                 <Center>
                     <Flex px='4em' justify='space-between' gap={20} align='center'>
@@ -140,16 +143,27 @@ const Dashboard = () => {
                                 <InputRightAddon children={<BsSearch />} />
                             </InputGroup>
                         </Stack>
-                        <Button
-                            bg='#810A67'
-                            color='#fff'
-                            leftIcon={<BsPlusCircleFill color='#fff' />}
-                            fontSize='.9em'
-                            _hover={{ bg: "#5b0b4a" }}
-                            onClick={onOpen}
-                        >
-                            Errand Request
-                        </Button>
+                        <Box>
+                            <Button
+                                bg='#810A67'
+                                color='#fff'
+                                leftIcon={<BsPlusCircleFill color='#fff' />}
+                                fontSize='.9em'
+                                _hover={{ bg: "#5b0b4a" }}
+                                onClick={onOpen}
+                                mr={4}
+                            >
+                                Errand Request
+                            </Button>
+                            <Button 
+                                bg='transparent'
+                                color='#810A67'
+                                border='1px solid #810A67'
+                                onClick={onBidOpen}
+                            >
+                                Bid
+                            </Button>
+                        </Box>
                     </Flex>
                 </Center>
                 <Box my='2em'>
