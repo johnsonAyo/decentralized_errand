@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 Figma file
-[https://www.figma.com/file/4AnazUQXHdoJK1zEt4JQSx/Fluently?type=design&node-id=236-850&t=pKDK4WK3kfPbA3zZ-0](https://www.figma.com/file/4AnazUQXHdoJK1zEt4JQSx/Fluently?type=design&node-id=236-850&t=pKDK4WK3kfPbA3zZ-0)
+([https://www.figma.com/file/4AnazUQXHdoJK1zEt4JQSx/Fluently?type=design&node-id=236-850&t=pKDK4WK3kfPbA3zZ-0](https://www.figma.com/file/1ZNvXBHdj9pWDAEuwyv3Mp/Untitled?t=1B69HQX5EjGQZVcd-0))
 ## Getting Started
 
 First, run the development server:
