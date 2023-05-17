@@ -1,6 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import Meta from "@/components/Meta";
 import Bid from "@/components/modal/Bid";
+import ErrandCompleted from "@/components/modal/ErrandCompleted";
 import ErrandRequest from "@/components/modal/ErrandRequest";
 import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from 'react-icons/bs'
@@ -122,12 +123,14 @@ const serviceArray = [
 const Dashboard = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { isOpen: isBidOpen, onOpen: onBidOpen, onClose: onBidClose } = useDisclosure();
+    const { isOpen: isErrandOpen, onOpen: onErrandOpen, onClose: onErrandClose } = useDisclosure();
 
     return (
         <Layout>
             <Meta page='Dashboard' />
             <ErrandRequest isOpen={isOpen} onClose={onClose} />
             <Bid isOpen={isBidOpen} onClose={onBidClose} />
+            <ErrandCompleted isOpen={isErrandOpen} onClose={onErrandClose} />
             <Box p='2.5em' px='5em' bg='#F5F5F566' h='92vh'>
                 <Center>
                     <Flex px='4em' justify='space-between' gap={20} align='center'>
@@ -163,6 +166,9 @@ const Dashboard = () => {
                                 onClick={onBidOpen}
                             >
                                 Bid
+                            </Button>
+                            <Button ml={2} onClick={onErrandOpen}>
+
                             </Button>
                         </Box>
                     </Flex>
