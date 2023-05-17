@@ -3,9 +3,6 @@ import {
   Button,
   Center,
   Flex,
-  FormControl,
-  FormLabel,
-  Image,
   Input,
   Modal,
   ModalBody,
@@ -25,8 +22,6 @@ interface Props {
 }
 
 const ErrandRequest: React.FC<Props> = ({ isOpen, onClose }) => {
-  const [activeComponent, setActiveComponent] = useState<string>("learn");
-
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
@@ -39,7 +34,6 @@ const ErrandRequest: React.FC<Props> = ({ isOpen, onClose }) => {
           }}
         />
         <ModalHeader>
-          {/* <Image src='/icons/LOGO.svg' alt='logo' /> */}
           <Center>
             <Text>Errand Requests</Text>
           </Center>
