@@ -24,6 +24,7 @@ import { BsSearch, BsPlusCircleFill } from "react-icons/bs";
 import { useErrandContext } from "@/context";
 import serviceIcon from '/icons/vacuum.svg'
 
+import ErrandDetails from "@/components/modal/ErrandDetails";
 
 const topRequests = [
   {
@@ -151,12 +152,18 @@ const Dashboard = () => {
     onOpen: onErrandOpen,
     onClose: onErrandClose,
   } = useDisclosure();
+  const {
+    isOpen: isDetailsOpen,
+    onOpen: onDetailsOpen,
+    onClose: onDetailsClose,
+  } = useDisclosure();
+
   return (
     <Layout>
       <Meta page="Dashboard" />
       <ErrandRequest isOpen={isOpen} onClose={onClose} />
-      <Bid isOpen={isBidOpen} onClose={onBidClose} />
       <ErrandCompleted isOpen={isErrandOpen} onClose={onErrandClose} />
+      <ErrandDetails isOpen={isDetailsOpen} onClose={onDetailsClose} />
       <Box p="2.5em" px="5em" bg="#F5F5F566" h="92vh">
         <Center>
           <Flex px="4em" justify="space-between" gap={20} align="center">
@@ -189,15 +196,23 @@ const Dashboard = () => {
               >
                 Errand Request
               </Button>
-              <Button
+              {/* <Button
                 bg="transparent"
                 color="#810A67"
                 border="1px solid #810A67"
                 onClick={onBidOpen}
               >
                 Bid
-              </Button>
-              <Button ml={2} onClick={onErrandOpen}></Button>
+              </Button> */}
+                <Button
+                    ml={2} 
+                    onClick={onErrandOpen}
+                    bg="transparent"
+                    color="#810A67"
+                    border="1px solid #810A67"
+                >
+                    ?
+                </Button>
             </Box>
           </Flex>
         </Center>
@@ -231,8 +246,8 @@ const Dashboard = () => {
             Recent Errands
           </Text>
           <Wrap p="1em" spacing="30px" h="53vh" overflowY="scroll">
-            {allErrands.map((service: any, index: any) => (
-              <WrapItem position="relative" borderRadius={5} key={index}>
+            {serviceArray?.map((service, index) => (
+              <WrapItem position="relative" borderRadius={5} key={index} onClick={onDetailsOpen} cursor='pointer'>
                 <Image
                   src=""
                   alt="icon"
@@ -256,7 +271,7 @@ const Dashboard = () => {
                   <Flex gap={1} my=".8em">
                     <Image src="/icons/case.svg" alt="icon" />
                     <Text fontWeight={600} fontSize="0.75em" color="#B6B6B6">
-                      {service.desc}
+                      {service.description}
                     </Text>
                   </Flex>
                   <Text fontSize=".75em" as="b">
