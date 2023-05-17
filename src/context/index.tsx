@@ -50,16 +50,18 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
     }
   }, [account]);
 
-  const postErrand = async ({
-    image,
-    title,
-    description,
-    location,
-    isOnsite,
-    category,
-    errandCost,
-  }: Props) => {
+  const postErrand = async (props: Props) => {
     try {
+      const {
+        image,
+        title,
+        description,
+        location,
+        isOnsite,
+        category,
+        errandCost,
+      } = props;
+
       const errandContract = await connectWithContract();
       const errand = errandContract.createErrand(
         image,
@@ -68,7 +70,7 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
         location,
         isOnsite,
         category,
-        errandCost
+        ethers.utils.parseUnits(errandCost.toString(), 18)
       );
       console.log(errand);
     } catch (error) {
@@ -76,7 +78,17 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
     }
   };
 
-  const getAllErrand = async () => {};
+  const getAllErrand = async () => {
+    try {
+      const errandContract = await connectWithContract();
+      const getErrands = await errandContract.getAllErrand();
+      console.log(getErrands);
+      setAllErrands(getErrands);
+      return getErrands;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const value = {
     allErrands,
@@ -89,5 +101,5 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
   );
 };
 
-export const useFluentContext = (): PodcastContextProps =>
+export const useErrandContext = (): PodcastContextProps =>
   useContext(ErrandContext);

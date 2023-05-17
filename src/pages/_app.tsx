@@ -23,6 +23,7 @@ import {
 import { evmWallets, solanaWallets } from "@particle-network/connect";
 import { ModalProvider } from "@particle-network/connect-react-ui";
 import { WalletEntryPosition } from "@particle-network/auth";
+import { ErrandProvider } from "@/context";
 //import "@particle-network/connect-react-ui/esm/index.css";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -31,13 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <ModalProvider
       walletSort={["Particle Auth", "Wallet"]}
-      particleAuthSort={[
-        "email",
-        "phone",
-        "google",
-        "apple",
-        "discord"
-      ]}
+      particleAuthSort={["email", "phone", "google", "apple", "discord"]}
       options={{
         projectId: "f8dc7e0f-ea6a-469c-8a41-c572ba65e0d2",
         clientKey: "c4mrm5RvfG8T7zsqOqZJtU78rd5M821fe2vMVhy2",
@@ -64,9 +59,11 @@ export default function App({ Component, pageProps }: AppProps) {
       language="en"
       theme={"light"}
     >
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <ErrandProvider>
+        <ChakraProvider>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </ErrandProvider>
     </ModalProvider>
   );
 }
