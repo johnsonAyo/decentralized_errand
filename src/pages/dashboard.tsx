@@ -144,15 +144,19 @@ const Dashboard = () => {
           <Flex px="4em" justify="space-between" gap={20} align="center">
             <Stack direction="row" spacing={4}>
               <InputGroup bg="#D9D9D94D">
-                <InputLeftAddon as="b" children="What" />
+                <InputLeftAddon as="b">What</InputLeftAddon>
                 <Input type="text" placeholder="Errand" />
-                <InputRightAddon children={<BsSearch />} />
+                <InputRightAddon>
+                  <BsSearch />
+                </InputRightAddon>
               </InputGroup>
 
               <InputGroup bg="#D9D9D94D">
-                <InputLeftAddon as="b" children="Where" />
+                <InputLeftAddon as="b">Where</InputLeftAddon>
                 <Input type="text" placeholder="Country, city, state" />
-                <InputRightAddon children={<BsSearch />} />
+                <InputRightAddon>
+                  <BsSearch />
+                </InputRightAddon>
               </InputGroup>
             </Stack>
             <Button
