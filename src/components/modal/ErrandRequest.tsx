@@ -44,38 +44,38 @@ import {
                       </Center>
                   </ModalHeader>
                   <ModalBody p='2em'>
-                    <Flex>
-                        <Flex>
-                            <Text fontSize='.75em'>Select Category:</Text>
+                    <Flex gap={4}>
+                        <Flex w='full'>
+                            <Text fontSize='.65em' fontWeight={600}>Select Category:</Text>
                             <Input />
                         </Flex>
-                        <Flex>
-                            <Text fontSize='.75em'>Errand Type:</Text>
-                            <Input />
-                        </Flex>
-                    </Flex>
-                    <Flex my='1em'>
-                        <Flex>
-                            <Text fontSize='.75em'>Header Display:</Text>
-                            <Input />
-                        </Flex>
-                        <Flex>
-                            <Text fontSize='.75em'>Job Location:</Text>
+                        <Flex w='full'>
+                            <Text fontSize='.65em' fontWeight={600}>Errand Type:</Text>
                             <Input />
                         </Flex>
                     </Flex>
-                    <Flex my='1em'>
-                        <Flex>
-                            <Text fontSize='.75em'>Errand Type:</Text>
+                    <Flex my='1em' gap={4}>
+                        <Flex w='full'>
+                            <Text fontSize='.65em' fontWeight={600}>Header Display:</Text>
                             <Input />
                         </Flex>
-                        <Flex>
-                            <Text fontSize='.75em'>Price Range:</Text>
+                        <Flex w='full'>
+                            <Text fontSize='.65em' fontWeight={600}>Job Location:</Text>
                             <Input />
                         </Flex>
                     </Flex>
-                    <Flex>
-                        <Text fontSize='.75em'>Description:</Text>
+                    <Flex my='1em' gap={4}>
+                        <Flex w='full'>
+                            <Text fontSize='.65em' fontWeight={600}>Errand Type:</Text>
+                            <Input />
+                        </Flex>
+                        <Flex w='full'>
+                            <Text fontSize='.65em' fontWeight={600}>Price Range:</Text>
+                            <Input />
+                        </Flex>
+                    </Flex>
+                    <Flex w='full' gap={4}>
+                        <Text fontSize='.65em' fontWeight={600}>Description:</Text>
                         <Textarea />
                     </Flex>
 

@@ -1,10 +1,11 @@
 import { ParticleNetwork, WalletEntryPosition } from "@particle-network/auth";
 import { ParticleProvider } from "@particle-network/provider";
 import { ethers } from "ethers";
+import errnadAbi from './Errand.json'
 
 
-export const tokenAddress = "0x45F0Ff65a3b0DBdA1732Cb5ECd50b356f55c56B4";
-export const tokenAccount = "0x5043C9fF4E701D365A324386A5101C6a3f088B0A";
+export const tokenAddress = "0xDBE184B8E5Dd824E844d0433a0F3A9322DC0e865";
+export const errandABI = errnadAbi.abi
 
 const particle = new ParticleNetwork({
     projectId: "f8dc7e0f-ea6a-469c-8a41-c572ba65e0d2",
@@ -31,7 +32,7 @@ const particle = new ParticleNetwork({
     const signer = provider.getSigner();
   
     // Creating a new contract factory with the signer, address and ABI
-    const contract = new ethers.Contract(tokenAccount, tokenAddress, signer);
+    const contract = new ethers.Contract( tokenAddress, errandABI, signer);
   
     return contract;
   }

@@ -18,10 +18,10 @@ export const CustomButton = () => {
             {account && (
               <Center>
                 <Flex position="relative">
-                  <Button bg="#810A67" color="white" onClick={openChainModal}>
+                <Button bg="#CB52F5" h="9" w="9" rounded="full" onClick={openAccountModal}/>
+                  <Button bg="transparent" borderColor="black" border="thin" color="black" onClick={openChainModal}>
                     {account.slice(0,5)}... {account.slice(36,40)}
                   </Button>
-                  <Button onClick={openAccountModal}>😉</Button>
                 </Flex>
               </Center>
             )}

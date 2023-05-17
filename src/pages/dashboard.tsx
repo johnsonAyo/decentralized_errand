@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import Meta from "@/components/Meta";
 import ErrandRequest from "@/components/modal/ErrandRequest";
 import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from 'react-icons/bs'
@@ -121,6 +122,7 @@ const Dashboard = () => {
 
     return (
         <Layout>
+            <Meta page='Dashboard' />
             <ErrandRequest isOpen={isOpen} onClose={onClose} />
             <Box p='2.5em' px='5em' bg='#F5F5F566' h='92vh'>
                 <Center>
@@ -157,7 +159,7 @@ const Dashboard = () => {
                             <Box 
                                 key={index}
                                 borderRadius={12} 
-                                minW='14vw' 
+                                minW='16vw' 
                                 p='1em' 
                                 border={`2px solid ${request.borderColor}`}
                             >
@@ -179,7 +181,7 @@ const Dashboard = () => {
                                     alt='icon' 
                                     position='absolute' 
                                     top={3}
-                                    left={300}
+                                    left={250}
                                 />
                                 <Flex 
                                     direction='column' 

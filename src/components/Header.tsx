@@ -5,6 +5,7 @@ import {
   Flex,
   Image,
   Input,
+  Link,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -15,32 +16,40 @@ import { CustomButton } from "./CustomButton";
 const Header = () => {
   return (
     <motion.div
-        initial={{ opacity: 0.01 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1.2 }}
+      initial={{ opacity: 0.01 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1, duration: 1.2 }}
     >
       <Flex
-        h='93vh'
+        h="93vh"
         w="full"
         align="center"
         justify="center"
-        direction='column'
+        direction="column"
         gap={5}
-        bg='#e2b4d87c'
+        bg="#e2b4d87c"
       >
-        <Text 
-          color='#810A67' 
-          fontSize='4em'
-          fontWeight={700}
-        >
+        <Text color="#810A67" fontSize="4em" fontWeight={700}>
           Revolutionize the Way You Work
         </Text>
-        <Text textAlign='center' color='#810A67' fontWeight={500} fontSize='1.5em'>
-          Find Top Talent and Seamless Services on the Next Generation Web  Platform <br />Join Today and Unlock Your Potential
+        <Text
+          textAlign="center"
+          color="#810A67"
+          fontWeight={500}
+          fontSize="1.5em"
+        >
+          Find Top Talent and Seamless Services on the Next Generation Web
+          Platform <br />
+          Join Today and Unlock Your Potential
         </Text>
-        <Stack direction='row' spacing={16}>
-        <CustomButton />
-          <Button bg='#E2B4D8' px='2em' _hover={{ bg: '#e2b4d87c' }}>
+        <Stack direction="row" spacing={16}>
+          <Link href="/signup">
+            <Button bg="#E2B4D8" px="2em" _hover={{ bg: "#e2b4d87c" }}>
+              Get Started
+            </Button>
+          </Link>
+
+          <Button bg="#E2B4D8" px="2em" _hover={{ bg: "#e2b4d87c" }}>
             Join our community
           </Button>
         </Stack>
@@ -48,9 +57,14 @@ const Header = () => {
         <motion.div
           initial={{ y: -150, opacity: 0 }}
           animate={{ y: -10, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1, type: 'spring', stiffness: 30 }}
+          transition={{
+            delay: 0.6,
+            duration: 1,
+            type: "spring",
+            stiffness: 30,
+          }}
         >
-          <Image src='/images/interview.svg' alt='illustration' mt='3em' />
+          <Image src="/images/interview.svg" alt="illustration" mt="3em" />
         </motion.div>
 
         {/* <Flex w="full" direction="column" justify="center" py="6em">
@@ -82,7 +96,12 @@ const Header = () => {
         <motion.div
           initial={{ y: -150, opacity: 0 }}
           animate={{ y: -10, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 1, type: 'spring', stiffness: 30 }}
+          transition={{
+            delay: 0.6,
+            duration: 1,
+            type: "spring",
+            stiffness: 30,
+          }}
         >
           {/* <Flex
             w="full"
