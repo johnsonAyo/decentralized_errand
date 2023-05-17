@@ -84,7 +84,7 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
       const errandContract = await connectWithContract();
       const getErrands = await errandContract.getAllErrand();
       const parsedAccount = getErrands?.map((user: any, i: any) => ({
-        image: user.image,
+        image: user.image.toString(),
         title: user.title,
         desc: user.description,
         location: user.location,
@@ -95,7 +95,7 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
         status: user.status,
         owner: user.owner
       }));
-      console.log(parsedAccount)
+      console.log(getErrands)
       setAllErrands(parsedAccount);
       return parsedAccount;
     } catch (error) {
