@@ -4,6 +4,7 @@ import Bid from "@/components/modal/Bid";
 import ErrandRequest from "@/components/modal/ErrandRequest";
 import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftAddon, InputRightAddon, Stack, Text, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from 'react-icons/bs'
+import { MdLocationOn } from 'react-icons/md'
 
 
 const topRequests = [
@@ -134,13 +135,13 @@ const Dashboard = () => {
                             <InputGroup bg='#D9D9D94D'>
                                 <InputLeftAddon as='b' children='What' />
                                 <Input type='text' placeholder='Errand' />
-                                <InputRightAddon children={<BsSearch />} />
+                                <InputRightAddon children={<BsSearch color='#3A3A3A99' />} />
                             </InputGroup>
 
                             <InputGroup bg='#D9D9D94D'>
                                 <InputLeftAddon as='b' children='Where' />
                                 <Input type='text' placeholder='Country, city, state' />
-                                <InputRightAddon children={<BsSearch />} />
+                                <InputRightAddon children={<MdLocationOn color='#3A3A3A99' />} />
                             </InputGroup>
                         </Stack>
                         <Box>
@@ -204,6 +205,7 @@ const Dashboard = () => {
                                     minH='23vh'
                                     minW='20vw'
                                     boxShadow='0px 0px 10px rgba(0, 0, 0, 0.1)'
+                                    bg='#fff'
                                 >
                                     <Image my='1em' src={service.image} alt='service' />
                                     <Text as='b' mt='1em'>{service.title}</Text>
