@@ -21,6 +21,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from "react-icons/bs";
+import ErrandDetails from "@/components/modal/ErrandDetails";
 
 const topRequests = [
   {
@@ -146,12 +147,18 @@ const Dashboard = () => {
     onOpen: onErrandOpen,
     onClose: onErrandClose,
   } = useDisclosure();
+  const {
+    isOpen: isDetailsOpen,
+    onOpen: onDetailsOpen,
+    onClose: onDetailsClose,
+  } = useDisclosure();
+
   return (
     <Layout>
       <Meta page="Dashboard" />
       <ErrandRequest isOpen={isOpen} onClose={onClose} />
-      <Bid isOpen={isBidOpen} onClose={onBidClose} />
       <ErrandCompleted isOpen={isErrandOpen} onClose={onErrandClose} />
+      <ErrandDetails isOpen={isDetailsOpen} onClose={onDetailsClose} />
       <Box p="2.5em" px="5em" bg="#F5F5F566" h="92vh">
         <Center>
           <Flex px="4em" justify="space-between" gap={20} align="center">
@@ -184,15 +191,23 @@ const Dashboard = () => {
               >
                 Errand Request
               </Button>
-              <Button
+              {/* <Button
                 bg="transparent"
                 color="#810A67"
                 border="1px solid #810A67"
                 onClick={onBidOpen}
               >
                 Bid
-              </Button>
-              <Button ml={2} onClick={onErrandOpen}></Button>
+              </Button> */}
+                <Button
+                    ml={2} 
+                    onClick={onErrandOpen}
+                    bg="transparent"
+                    color="#810A67"
+                    border="1px solid #810A67"
+                >
+                    ?
+                </Button>
             </Box>
           </Flex>
         </Center>
@@ -227,7 +242,7 @@ const Dashboard = () => {
           </Text>
           <Wrap p="1em" spacing="30px" h="53vh" overflowY="scroll">
             {serviceArray?.map((service, index) => (
-              <WrapItem position="relative" borderRadius={5} key={index}>
+              <WrapItem position="relative" borderRadius={5} key={index} onClick={onDetailsOpen} cursor='pointer'>
                 <Image
                   src={service.serviceIcon}
                   alt="icon"
