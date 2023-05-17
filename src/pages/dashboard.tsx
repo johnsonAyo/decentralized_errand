@@ -246,7 +246,7 @@ const Dashboard = () => {
             Recent Errands
           </Text>
           <Wrap p="1em" spacing="30px" h="53vh" overflowY="scroll">
-            {allErrands?.map((service: any, index: any) => (
+            {serviceArray?.map((service, index) => (
               <WrapItem position="relative" borderRadius={5} key={index} onClick={onDetailsOpen} cursor='pointer'>
                 <Image
                   src=""
@@ -271,7 +271,7 @@ const Dashboard = () => {
                   <Flex gap={1} my=".8em">
                     <Image src="/icons/case.svg" alt="icon" />
                     <Text fontWeight={600} fontSize="0.75em" noOfLines={2} color="#B6B6B6">
-                      {service.desc}
+                      {service.description}
                     </Text>
                   </Flex>
                   <Text fontSize=".75em" as="b">
