@@ -21,6 +21,9 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { BsSearch, BsPlusCircleFill } from "react-icons/bs";
+import { useErrandContext } from "@/context";
+import serviceIcon from '/icons/vacuum.svg'
+
 import ErrandDetails from "@/components/modal/ErrandDetails";
 
 const topRequests = [
@@ -137,6 +140,8 @@ const serviceArray = [
 
 const Dashboard = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {allErrands} = useErrandContext();
+ // console.log(allErrands)
   const {
     isOpen: isBidOpen,
     onOpen: onBidOpen,
@@ -244,7 +249,7 @@ const Dashboard = () => {
             {serviceArray?.map((service, index) => (
               <WrapItem position="relative" borderRadius={5} key={index} onClick={onDetailsOpen} cursor='pointer'>
                 <Image
-                  src={service.serviceIcon}
+                  src=""
                   alt="icon"
                   position="absolute"
                   top={3}
@@ -259,13 +264,13 @@ const Dashboard = () => {
                   boxShadow="0px 0px 10px rgba(0, 0, 0, 0.1)"
                   bg="#fff"
                 >
-                  <Image my="1em" src={service.image} alt="service" />
+                  <Image my="1em" src={`${service.image}`} w={300} h={300} alt="service" />
                   <Text as="b" mt="1em">
                     {service.title}
                   </Text>
                   <Flex gap={1} my=".8em">
                     <Image src="/icons/case.svg" alt="icon" />
-                    <Text fontWeight={600} fontSize="0.75em" color="#B6B6B6">
+                    <Text fontWeight={600} fontSize="0.75em" noOfLines={2} color="#B6B6B6">
                       {service.description}
                     </Text>
                   </Flex>
@@ -276,7 +281,7 @@ const Dashboard = () => {
                     </Text>
                   </Text>
                   <Text color="#B6B6B6" fontSize=".75em" mt=".8em">
-                    {service.date}
+                   {service.date}
                   </Text>
                 </Flex>
               </WrapItem>

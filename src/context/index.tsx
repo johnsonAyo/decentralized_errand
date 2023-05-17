@@ -34,6 +34,7 @@ const ErrandContext = createContext<PodcastContextProps>({
 
 export const ErrandProvider = ({ children }: FluentProviderProps) => {
   const [allErrands, setAllErrands] = useState([]);
+  console.log(allErrands)
 
   const account = useAccount();
   const router = useRouter();
@@ -82,13 +83,29 @@ export const ErrandProvider = ({ children }: FluentProviderProps) => {
     try {
       const errandContract = await connectWithContract();
       const getErrands = await errandContract.getAllErrand();
-      console.log(getErrands);
-      setAllErrands(getErrands);
-      return getErrands;
+      const parsedAccount = getErrands?.map((user: any, i: any) => ({
+        image: user.image.toString(),
+        title: user.title,
+        desc: user.description,
+        location: user.location,
+        onSite: user.isOnSite,
+        category: user.category,
+        //date: user.category?.toNumber(),
+        //cost: ethers.utils.parseEther(user.errandCost.toNumber()) ,
+        status: user.status,
+        owner: user.owner
+      }));
+      console.log(getErrands)
+      setAllErrands(parsedAccount);
+      return parsedAccount;
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    getAllErrand()
+  }, [])
 
   const value = {
     allErrands,

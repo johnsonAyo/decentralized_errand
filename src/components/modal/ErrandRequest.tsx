@@ -1,4 +1,5 @@
 import { useErrandContext } from "@/context";
+import { sendFileToIPFS } from "@/pinata";
 import {
   Box,
   Button,
@@ -40,6 +41,22 @@ const ErrandRequest: React.FC<Props> = ({ isOpen, onClose }) => {
   const [category, setCategory] = useState("");
   const [errandCost, setErrandCost] = useState(0);
   const { postErrand } = useErrandContext();
+
+  const ipfsgateway = "gateway.pinata.cloud";
+
+  const onChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
+    const file = e.target.files?.[0]; 
+    if (file) {
+      try {
+        const getCid = await sendFileToIPFS(file);
+        const ipfsPath = `https://${ipfsgateway}/ipfs/${getCid}`;
+        console.log(ipfsPath);
+        setImage(ipfsPath);
+      } catch (error) {
+        console.error("Error uploading file to IPFS:", error);
+      }
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,9 +110,8 @@ const ErrandRequest: React.FC<Props> = ({ isOpen, onClose }) => {
               </Text>
               <Input
                 size="xs"
-                type="text"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
+                type="file"
+                onChange={onChange}
                 placeholder="Image URL"
               />
             </Flex>
@@ -118,19 +134,17 @@ const ErrandRequest: React.FC<Props> = ({ isOpen, onClose }) => {
                 Category
               </Text>
               <Select
+              size="xs"
               title="Select language"
               placeholder="Select option"
               onChange={(e) => setCategory(e.target.value)}
             >
-              <option value="English">English</option>
-              <option value="Spanish">Spanish</option>
-              <option value="French">French</option>
-              <option value="German">German</option>
-              <option value="Korean">Korean</option>
-              <option value="Chinese">Chinese</option>
-              <option value="Estonian">Estonian</option>
-              <option value="Haitian Creole">Haitian Creole</option>
-              <option value="Hindi">Hindi</option>
+              <option value="Cleaning">Cleaning</option>
+              <option value="Repairs/Construction">Repairs/Construction</option>
+              <option value="Tourism & Entertainment">Tourism & Entertainment</option>
+              <option value="Repairs of equipment">Repairs of equipment</option>
+              <option value="Car repairs">Car repairs</option>
+              <option value="Real estate">Real estate</option>
             </Select>
 
             </Flex>
