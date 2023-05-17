@@ -1,4 +1,3 @@
-import { useFluentContext } from "@/context";
 import {
   Box,
   Button,
@@ -31,8 +30,6 @@ type Props = {
 };
 
 const Speak: React.FC<Props> = ({ setActiveComponent }) => {
-  const { native, setNative } = useFluentContext();
-  console.log(native);
   const [beginner, setBeginner] = useState(false);
   const [intermediate, setIntermediate] = useState(false);
   const [natives, setNatives] = useState(false);
@@ -73,7 +70,7 @@ const Speak: React.FC<Props> = ({ setActiveComponent }) => {
               Select your proficiency level
             </FormLabel>
             <Flex align="center" justifyContent="space-between">
-            <Flex gap={4} color="#FDD835">
+              <Flex gap={4} color="#FDD835">
                 <Box onClick={() => setBeginner((prev) => !prev)}>
                   {beginner ? <BsStarFill size={24} /> : <BsStar size={24} />}
                 </Box>
