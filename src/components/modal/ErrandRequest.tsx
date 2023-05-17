@@ -78,15 +78,15 @@ import {
                         <Text fontSize='.65em' fontWeight={600}>Description:</Text>
                         <Textarea />
                     </Flex>
+        </ModalBody>
+        <ModalFooter>
+          <Button px="2em" bg="#810A67" _hover={{ bg: "#5b0b4a" }} color="#fff">
+            Post Request
+          </Button>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+};
 
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button px='2em' bg='#810A67' _hover={{ bg: "#5b0b4a" }} color='#fff'>Post Request</Button>
-                  </ModalFooter>
-              </ModalContent>
-          </Modal>
-      )
-  }
-  
-  export default ErrandRequest;
-  
+export default ErrandRequest;

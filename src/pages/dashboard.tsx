@@ -7,118 +7,117 @@ import { Box, Button, Center, Flex, HStack, Image, Input, InputGroup, InputLeftA
 import { BsSearch, BsPlusCircleFill } from 'react-icons/bs'
 import { MdLocationOn } from 'react-icons/md'
 
-
 const topRequests = [
-    {
-        icon: '/icons/vacuum.svg',
-        title: 'Cleaning',
-        workers: '490 workers',
-        borderColor: '#00A9CE'
-    },
-    {
-        icon: '/icons/constructor.svg',
-        title: 'Repairs/Construction',
-        workers: '4190 workers',
-        borderColor: '#6B7AED'
-    },
-    {
-        icon: '/icons/deck-chair.svg',
-        title: 'Tourism & Entertainment',
-        workers: '230 workers',
-        borderColor: '#FFCD55'
-    },
-    {
-        icon: '/icons/plug.svg',
-        title: 'Repairs of equipment',
-        workers: '230 workers',
-        borderColor: '#39D1F2'
-    },
-    {
-        icon: '/icons/car.svg',
-        title: 'Car repairs',
-        workers: '490 workers',
-        borderColor: '#FF6D6C'
-    },
-    {
-        icon: '/icons/building.svg',
-        title: 'Realestate',
-        workers: '4190 workers',
-        borderColor: '#29D697'
-    },
-    {
-        icon: '/icons/constructor.svg',
-        title: 'Repairs/Construction',
-        workers: '4190 workers',
-        borderColor: '#6B7AED'
-    },
-]
+  {
+    icon: "/icons/vacuum.svg",
+    title: "Cleaning",
+    workers: "490 workers",
+    borderColor: "#00A9CE",
+  },
+  {
+    icon: "/icons/constructor.svg",
+    title: "Repairs/Construction",
+    workers: "4190 workers",
+    borderColor: "#6B7AED",
+  },
+  {
+    icon: "/icons/deck-chair.svg",
+    title: "Tourism & Entertainment",
+    workers: "230 workers",
+    borderColor: "#FFCD55",
+  },
+  {
+    icon: "/icons/plug.svg",
+    title: "Repairs of equipment",
+    workers: "230 workers",
+    borderColor: "#39D1F2",
+  },
+  {
+    icon: "/icons/car.svg",
+    title: "Car repairs",
+    workers: "490 workers",
+    borderColor: "#FF6D6C",
+  },
+  {
+    icon: "/icons/building.svg",
+    title: "Realestate",
+    workers: "4190 workers",
+    borderColor: "#29D697",
+  },
+  {
+    icon: "/icons/constructor.svg",
+    title: "Repairs/Construction",
+    workers: "4190 workers",
+    borderColor: "#6B7AED",
+  },
+];
 
 const serviceArray = [
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    },
-    {
-        serviceIcon: '/icons/serviceIcon.svg',
-        image: '/images/apartment.svg',
-        title: 'Apartment Cleaning',
-        description: 'Cleaning',
-        price: '0.002ETH',
-        date: 'Until 16-05-22'
-    }
-]
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+  {
+    serviceIcon: "/icons/serviceIcon.svg",
+    image: "/images/apartment.svg",
+    title: "Apartment Cleaning",
+    description: "Cleaning",
+    price: "0.002ETH",
+    date: "Until 16-05-22",
+  },
+];
 
 const Dashboard = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
