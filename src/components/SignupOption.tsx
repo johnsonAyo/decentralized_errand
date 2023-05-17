@@ -15,34 +15,8 @@ import {
 import { ConnectWallet, MetaMask } from "./ButtonIcon";
 import { BsExclamation } from "react-icons/bs";
 import Link from "next/link";
-import {
-  useMetamask,
-  useAddress,
-  ConnectWallet as ConnectWeb3Wallet,
-  useWalletConnect,
-} from "@thirdweb-dev/react";
-import { useRouter } from "next/router";
 
 const SignupOption = () => {
-  const address = useAddress();
-  const router = useRouter();
-  const wallet = useWalletConnect();
-
-  function ConnectToWalletConnect() {
-    wallet();
-    if (address) {
-      router.push("/welcome");
-    }
-  }
-
-  const connect = useMetamask();
-
-  function ConnectToMetamask() {
-    connect();
-    if (address) {
-      router.push("/welcome");
-    }
-  }
   return (
     <Tabs isFitted variant="unstyled">
       <TabList>
@@ -63,7 +37,6 @@ const SignupOption = () => {
           </Text>
           <Flex align="center" gap="10" my="1em">
             <Button
-            onClick={() => ConnectToMetamask()}
               border="1px solid #FDD835"
               bg="#FBFAF7"
               w="full"
@@ -75,7 +48,6 @@ const SignupOption = () => {
             </Button>
 
             <Button
-            onClick={() => ConnectToWalletConnect()}
               border="1px solid #FDD835"
               bg="#FBFAF7"
               w="full"

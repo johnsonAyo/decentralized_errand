@@ -23,52 +23,20 @@ import {
 import { evmWallets, solanaWallets } from "@particle-network/connect";
 import { ModalProvider } from "@particle-network/connect-react-ui";
 import { WalletEntryPosition } from "@particle-network/auth";
-// import "@particle-network/connect-react-ui/esm/index.css";
-
-const colors = {
-  brand: {
-    900: "#1a365d",
-    800: "#153e75",
-    700: "#2a69ac",
-  },
-};
-
-import {
-  ThirdwebProvider,
-  metamaskWallet,
-  coinbaseWallet,
-  walletConnect,
-  useAddress,
-} from "@thirdweb-dev/react";
-import { useRouter } from "next/router";
-
-export const theme = extendTheme({ colors });
-
-//const PROJECT_ID = process.env.NEXT_PUBLIC_PROJECT_ID
+import { ErrandProvider } from "@/context";
+//import "@particle-network/connect-react-ui/esm/index.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
-  const address = useAddress();
-  const Router = useRouter();
 
   return (
     <ModalProvider
       walletSort={["Particle Auth", "Wallet"]}
-      particleAuthSort={[
-        "email",
-        "phone",
-        "google",
-        "apple",
-        "facebook",
-        "microsoft",
-        "linkedin",
-        "github",
-        "discord",
-      ]}
+      particleAuthSort={["email", "phone", "google", "apple", "discord"]}
       options={{
-        projectId: "36a6b978-bba6-4df2-995b-6a1b6c63595f",
-        clientKey: "cZKsbhDLbhzsQ8XLDyNNh86gMIM2DNtqDndv3z7E",
-        appId: "sIqnAdsoFxqCzRuLGVuRTwERESTLkQAc1tU3vMun",
+        projectId: "f8dc7e0f-ea6a-469c-8a41-c572ba65e0d2",
+        clientKey: "c4mrm5RvfG8T7zsqOqZJtU78rd5M821fe2vMVhy2",
+        appId: "24b042dd-86d6-4507-a55c-fdd7981f0ae5",
         chains: [
           PlatON,
           Optimism,
@@ -79,7 +47,6 @@ export default function App({ Component, pageProps }: AppProps) {
           BSC,
           Ethereum,
           EthereumGoerli,
-          Solana,
           BSCTestnet,
           KCCTestnet,
         ],
@@ -88,14 +55,15 @@ export default function App({ Component, pageProps }: AppProps) {
           defaultWalletEntryPosition: WalletEntryPosition.BR,
           supportChains: [Ethereum, EthereumGoerli],
         },
-        wallets: [...evmWallets({ qrcode: false }), ...solanaWallets()],
       }}
       language="en"
       theme={"light"}
     >
-      <ChakraProvider>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <ErrandProvider>
+        <ChakraProvider>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </ErrandProvider>
     </ModalProvider>
   );
 }
