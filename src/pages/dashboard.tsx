@@ -1,6 +1,8 @@
 import Layout from "@/components/layout/Layout";
 import Meta from "@/components/Meta";
 import ErrandRequest from "@/components/modal/ErrandRequest";
+import Bid from "@/components/modal/Bid";
+import ErrandCompleted from "@/components/modal/ErrandCompleted";
 import {
   Box,
   Button,
@@ -134,11 +136,22 @@ const serviceArray = [
 
 const Dashboard = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const {
+    isOpen: isBidOpen,
+    onOpen: onBidOpen,
+    onClose: onBidClose,
+  } = useDisclosure();
+  const {
+    isOpen: isErrandOpen,
+    onOpen: onErrandOpen,
+    onClose: onErrandClose,
+  } = useDisclosure();
   return (
     <Layout>
       <Meta page="Dashboard" />
       <ErrandRequest isOpen={isOpen} onClose={onClose} />
+      <Bid isOpen={isBidOpen} onClose={onBidClose} />
+      <ErrandCompleted isOpen={isErrandOpen} onClose={onErrandClose} />
       <Box p="2.5em" px="5em" bg="#F5F5F566" h="92vh">
         <Center>
           <Flex px="4em" justify="space-between" gap={20} align="center">
@@ -159,16 +172,28 @@ const Dashboard = () => {
                 </InputRightAddon>
               </InputGroup>
             </Stack>
-            <Button
-              bg="#810A67"
-              color="#fff"
-              leftIcon={<BsPlusCircleFill color="#fff" />}
-              fontSize=".9em"
-              _hover={{ bg: "#5b0b4a" }}
-              onClick={onOpen}
-            >
-              Errand Request
-            </Button>
+            <Box>
+              <Button
+                bg="#810A67"
+                color="#fff"
+                leftIcon={<BsPlusCircleFill color="#fff" />}
+                fontSize=".9em"
+                _hover={{ bg: "#5b0b4a" }}
+                onClick={onOpen}
+                mr={4}
+              >
+                Errand Request
+              </Button>
+              <Button
+                bg="transparent"
+                color="#810A67"
+                border="1px solid #810A67"
+                onClick={onBidOpen}
+              >
+                Bid
+              </Button>
+              <Button ml={2} onClick={onErrandOpen}></Button>
+            </Box>
           </Flex>
         </Center>
         <Box my="2em">
@@ -217,6 +242,7 @@ const Dashboard = () => {
                   minH="23vh"
                   minW="20vw"
                   boxShadow="0px 0px 10px rgba(0, 0, 0, 0.1)"
+                  bg="#fff"
                 >
                   <Image my="1em" src={service.image} alt="service" />
                   <Text as="b" mt="1em">
@@ -246,5 +272,4 @@ const Dashboard = () => {
     </Layout>
   );
 };
-
 export default Dashboard;
